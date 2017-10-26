@@ -12,14 +12,17 @@ Decorators tutorial: https://www.youtube.com/watch?v=9oyr0mocZTg
 
 
 csv: https://docs.python.org/3.5/library/csv.html
+
 argparse: https://docs.python.org/3.5/library/argparse.html
 
 ## Pytest documentation:
 
 pytest: https://docs.pytest.org/en/latest/
+
 pytest fixtures: https://docs.pytest.org/en/latest/fixture.html
 
 ## Packages
 
 arrow - better datetime: https://pypi.python.org/pypi/arrow
+
 pytest: https://pypi.python.org/pypi/pytest
