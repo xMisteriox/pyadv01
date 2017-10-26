@@ -20,9 +20,10 @@ argparse: https://docs.python.org/3.5/library/argparse.html
 pytest: https://docs.pytest.org/en/latest/
 
 pytest fixtures: https://docs.pytest.org/en/latest/fixture.html
-
+:P
 ## Packages
 
+dupa branch ! :P
 a jednak nie
 
 arrow - better datetime: https://pypi.python.org/pypi/arrow
