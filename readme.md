@@ -23,6 +23,7 @@ pytest fixtures: https://docs.pytest.org/en/latest/fixture.html
 
 ## Packages
 
+a jednak nie
 
 arrow - better datetime: https://pypi.python.org/pypi/arrow
 
