@@ -29,3 +29,7 @@ a jednak nie
 arrow - better datetime: https://pypi.python.org/pypi/arrow
 
 pytest: https://pypi.python.org/pypi/pytest
+
+## Zmiany
+
+Wprowadzam zmiany
