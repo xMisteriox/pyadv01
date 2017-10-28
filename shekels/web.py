@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request,\
-    redirect, url_for, flash, abort
+from flask import Flask, render_template, request, \
+    redirect, url_for, flash, abort, session
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_login import LoginManager, \
     login_required, login_user, logout_user, UserMixin
@@ -11,11 +11,12 @@ from shekels.forms import ExpenseForm, LoginForm, RegisterForm
 
 import logging
 import shekels.logger
+
 shekels.logger.setup()
 
 app = Flask(__name__)
 app.secret_key = 'fdsafhsdalkghsdahg'
-app.debug = False
+app.debug = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -25,7 +26,11 @@ login_manager.init_app(app)
 login_manager.login_view = "login"
 login_manager.login_message = "Log in please!"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../expense2.db'
+# SQLite database
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../expense2.db'
+
+# To change user or password change the postgres:postres part
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+pg8000://postgres:postgres@localhost/shekels'
 
 db = SQLAlchemy(app)
 
@@ -109,7 +114,8 @@ def user_list():
 @app.route('/list')
 @login_required
 def list():
-    expenses = db.session.query(Expense).all()
+    user_id = session['user_id']
+    expenses = db.session.query(Expense).filter(Expense.user_id == user_id).all()
     return render_template('list.html',
                            expenses=expenses)
 
@@ -123,6 +129,7 @@ def add():
             name=form.name.data,
             price=form.price.data
         )
+        expense.user_id = session['user_id']
         db.session.add(expense)
         db.session.commit()
         return redirect(url_for('index'))
@@ -152,6 +159,7 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
