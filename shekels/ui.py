@@ -63,29 +63,23 @@ class MainApp():
         self.listbox_variable = tk.StringVar()
         self.search_variable = tk.StringVar()
 
-        list_box = tk.Listbox(root, listvariable=self.listbox_variable,
-                              selectmode=tk.MULTIPLE)
+        list_box = tk.Listbox(root, listvariable=self.listbox_variable, selectmode=tk.MULTIPLE)
 
-        list_box.grid(row=0, column=0,
-                      sticky=tk.E + tk.W + tk.S + tk.N)
+        list_box.grid(row=0, column=0, sticky=tk.E + tk.W + tk.S + tk.N)
 
         button_frame = tk.Frame(root)
         button_frame.grid(row=1, column=0)
 
-        quit_button = tk.Button(button_frame, text='quit',
-                                command=self.quit_cmd)
+        quit_button = tk.Button(button_frame, text='quit', command=self.quit_cmd)
         quit_button.grid(row=0, column=2)
 
-        search_button = tk.Button(button_frame, text='search',
-                                  command=self.search_cmd)
+        search_button = tk.Button(button_frame, text='search', command=self.search_cmd)
         search_button.grid(row=0, column=1)
 
-        text_box = tk.Entry(button_frame,
-                            textvariable=self.search_variable)
+        text_box = tk.Entry(button_frame, textvariable=self.search_variable)
         text_box.grid(row=0, column=0)
 
-        add_product_frame = AddExpense(root,
-                           add_product_command=self.add_product_cmd)
+        add_product_frame = AddExpense(root, add_product_command=self.add_product_cmd)
         add_product_frame.grid(row=2, column=0)
 
         expenses = get_expenses()
